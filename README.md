@@ -20,3 +20,45 @@ When the 3-state switch is in MULTILINGUAL mode, the 4-state switch will remap t
 In each language mode, a piano button press will cause it to cycle through: colors, animals, shapes, and counting.
 In LISTEN_ML mode, each piano button will play different foreign language nursery rhymes (song selection tbd)
 
+## Build/Run/Install
+
+### Tool Chain
+
+```
+sudo apt update
+sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
+```
+
+### Clone pico-sdk
+
+```
+git clone -b master https://github.com/raspberrypi/pico-sdk.git
+cd pico-sdk
+git submodule update --init
+```
+
+### Cmake
+
+```
+mkdir build
+cd build
+export PICO_SDK_PATH=../pico-sdk/pico-sdk
+cmake ..
+```
+
+### Build
+
+```
+cd build/PianoML
+make
+```
+
+### Install
+
+Turn on Raspberry Pi Pico with BOOTSEL button pressed.
+
+It should mount as mass storage USB device.
+
+Copy build/PianoML/<program>.uf2 into usb device folder.
+
+Code should automatically start executing
